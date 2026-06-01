@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8000";
+const API_BASE = "https://url-shortener-b80y.onrender.com";
 const LINKS_KEY = "url-shortener.links";
 const THEME_KEY = "url-shortener.theme";
 
