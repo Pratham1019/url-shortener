@@ -11,7 +11,7 @@ def redirect_url(code: str):
     long_url = get_long_url(code)
     
     if long_url is None:
-        return RedirectResponse(url=f"http://localhost:5500/not-found.html?code={code}", status_code=302)
+        return RedirectResponse(url=f"https://url-shortener-1-x8vr.onrender.com/not-found.html?code={code}", status_code=302)
     
     return RedirectResponse(long_url, status_code=302)
 
