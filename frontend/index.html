@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Shortener</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main class="shell">
+    <section class="hero">
+      <header class="topbar">
+        <a class="brand" href="index.html" aria-label="URL Shortener home">
+          <span class="brand-mark">US</span>
+          <span>URL Shortener</span>
+        </a>
+
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color mode">
+          <span id="theme-label">Dark</span>
+        </button>
+      </header>
+
+      <div class="intro">
+        <p class="eyebrow">Fast, tidy, local-first links</p>
+        <h1>Short links with a cleaner home.</h1>
+        <p class="intro-copy">Create compact URLs, copy them instantly, and keep a local history on this browser.</p>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <form id="shorten-form" class="creator">
+        <label for="long-url">Destination URL</label>
+        <div class="input-row">
+          <input id="long-url" name="url" type="text" inputmode="url" placeholder="example.com/very/long/link" required>
+          <button type="submit" id="submit-button">Shorten</button>
+        </div>
+
+        <label for="duration">Link lifetime</label>
+        <select id="duration" name="duration">
+          <option value="3600">1 hour</option>
+          <option value="86400" selected>1 day</option>
+          <option value="604800">7 days</option>
+          <option value="2592000">30 days</option>
+          <option value="31536000">1 year</option>
+        </select>
+      </form>
+
+      <section id="result" class="result" hidden>
+        <span>New short link</span>
+        <div class="result-row">
+          <a id="short-url" href="#" target="_blank" rel="noreferrer"></a>
+          <button type="button" id="copy-button">Copy</button>
+        </div>
+      </section>
+
+      <section class="history">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Saved locally</p>
+            <h2>Your links</h2>
+          </div>
+          <button type="button" class="ghost-button" id="clear-history">Clear</button>
+        </div>
+
+        <div id="empty-state" class="empty-state">
+          Your created links will appear here.
+        </div>
+
+        <ul id="link-list" class="link-list" aria-label="Created short links"></ul>
+      </section>
+
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
