@@ -28,6 +28,27 @@ function saveLinks(links) {
   localStorage.setItem(LINKS_KEY, JSON.stringify(links));
 }
 
+function getActiveLinks() {
+  const now = Date.now();
+  const links = loadLinks();
+  const activeLinks = links.filter((link) => {
+    const createdAt = Date.parse(link.createdAt);
+    const duration = Number(link.duration);
+
+    if (!createdAt || !duration) {
+      return true;
+    }
+
+    return createdAt + duration * 1000 > now;
+  });
+
+  if (activeLinks.length !== links.length) {
+    saveLinks(activeLinks);
+  }
+
+  return activeLinks;
+}
+
 function showMessage(text, type = "") {
   message.textContent = text;
   message.className = `message ${type}`.trim();
@@ -52,7 +73,7 @@ function formatDate(value) {
 }
 
 function renderLinks() {
-  const links = loadLinks();
+  const links = getActiveLinks();
 
   linkList.innerHTML = "";
   emptyState.hidden = links.length > 0;
@@ -101,7 +122,7 @@ function renderLinks() {
 }
 
 function addStoredLink(link) {
-  const links = loadLinks().filter((item) => item.shortUrl !== link.shortUrl);
+  const links = getActiveLinks().filter((item) => item.shortUrl !== link.shortUrl);
   links.unshift(link);
   saveLinks(links.slice(0, 20));
   renderLinks();
@@ -227,3 +248,4 @@ const preferredTheme = localStorage.getItem(THEME_KEY)
 
 applyTheme(preferredTheme);
 renderLinks();
+setInterval(renderLinks, 60000);
