@@ -179,6 +179,10 @@ function applyTheme(theme) {
   localStorage.setItem(THEME_KEY, theme);
 }
 
+window.addEventListener("pointerdown", (event) => {
+  document.documentElement.dataset.input = event.pointerType === "touch" ? "touch" : "pointer";
+});
+
 shortenForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -241,6 +245,7 @@ clearHistoryButton.addEventListener("click", () => {
 themeToggle.addEventListener("click", () => {
   const current = document.documentElement.dataset.theme || "light";
   applyTheme(current === "dark" ? "light" : "dark");
+  themeToggle.blur();
 });
 
 const preferredTheme = localStorage.getItem(THEME_KEY)

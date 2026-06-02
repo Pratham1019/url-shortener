@@ -227,14 +227,46 @@ button,
   text-decoration: none;
 }
 
-button:hover,
-.home-link:hover {
-  background: var(--accent-strong);
-}
-
 button:disabled {
   cursor: not-allowed;
   opacity: 0.62;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button:hover,
+  .home-link:hover {
+    background: var(--accent-strong);
+  }
+}
+
+[data-input="touch"] button:hover,
+[data-input="touch"] .home-link:hover {
+  background: var(--accent);
+}
+
+[data-input="touch"] .theme-toggle:hover,
+[data-input="touch"] .ghost-button:hover {
+  background: var(--panel);
+}
+
+[data-input="touch"] .danger-button:hover {
+  background: var(--danger);
+}
+
+@media (hover: none) {
+  button:hover,
+  .home-link:hover {
+    background: var(--accent);
+  }
+
+  .theme-toggle:hover,
+  .ghost-button:hover {
+    background: var(--panel);
+  }
+
+  .danger-button:hover {
+    background: var(--danger);
+  }
 }
 
 .result,
@@ -341,6 +373,22 @@ button:disabled {
 
 .message.error {
   color: var(--danger);
+}
+
+.footer {
+  padding: 42px 0 0;
+  text-align: center;
+}
+
+.footer a {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--accent-strong);
 }
 
 .not-found-page {
