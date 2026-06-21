@@ -10,3 +10,9 @@ Simple, fast, and scalable URL shortener using FastAPI and Redis.
 
 **Live site:** [Click here](https://url-shortener-1-x8vr.onrender.com)\
 **API Documentation:** [docs](https://url-shortener-b80y.onrender.com/docs)
+
+## Testing
+Run backend tests:
+```bash
+cd backend && uv sync --group dev && uv run pytest tests -q
+```
