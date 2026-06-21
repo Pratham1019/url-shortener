@@ -6,6 +6,11 @@ from .services import create_short_code, get_long_url, delete_short_code
 
 router = APIRouter()
 
+@router.get("/health")
+def health_check():
+    return {"status": "ok"}
+
+
 @router.get("/{code}", response_class=RedirectResponse)
 def redirect_url(code: str):
     long_url = get_long_url(code)
