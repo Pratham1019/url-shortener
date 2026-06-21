@@ -1,17 +1,45 @@
-venv/
+# Local Codex workspace metadata
+.agents/
+.codex/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.pyc.*
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Python packaging and build outputs
+*.egg
+*.egg-info/
+.eggs/
+build/
+dist/
+pip-wheel-metadata/
+site/
+
+# Virtual environments
 .venv/
+venv/
 env/
 ENV/
 
-__pycache__/
-*.py[cod]
-*.so
-*.egg-info/
-dist/
-build/
-
-.vscode/
+# Local environment files
 .env
-.env.local
+.env.*
+!.env.example
 
+# Editor and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
+Thumbs.db
